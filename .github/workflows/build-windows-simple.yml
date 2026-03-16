@@ -1,0 +1,35 @@
+name: Build Windows Simple
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019  # Более стабильная версия
+    
+    steps:
+    - uses: actions/checkout@v3  # Более стабильная версия checkout
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'  # Более стабильная версия
+        
+    - name: Build
+      run: |
+        flutter config --enable-windows-desktop
+        flutter pub get
+        flutter build windows --release
+        
+    - name: List files
+      run: |
+        ls -la build/windows/runner/Release/
+        
+    - name: Upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-app
+        path: build/windows/runner/Release/
