@@ -1,0 +1,99 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Windows build artifacts
+/windows/flutter/GeneratedPluginRegistrant.*
+/windows/flutter/cpp_client_wrapper.*
+/windows/runner/Debug/
+/windows/runner/Release/
+/windows/runner/*.exe
+/windows/runner/*.pdb
+/windows/runner/*.ilk
+/windows/runner/*.obj
+/windows/runner/*.lib
+/windows/runner/*.exp
+/windows/runner/*.pch
+/windows/runner/*.tmp
+/windows/runner/*.tlog
+/windows/runner/*.lastbuildstate
+/windows/runner/*.cache
+/windows/runner/*.ipch
+/windows/runner/*.bsc
+/windows/runner/*.sbr
+/windows/runner/*.aps
+/windows/runner/*.vcxproj.*
+/windows/runner/*.sdf
+/windows/runner/*.opensdf
+/windows/runner/*.pgc
+/windows/runner/*.pgd
+/windows/runner/*.rsp
+/windows/runner/*.ncb
+/windows/runner/*.opt
+/windows/runner/*.plg
+/windows/runner/*.tlb
+/windows/runner/*.tli
+/windows/runner/*.tlh
+/windows/runner/*.i
+/windows/runner/*.idb
+/windows/runner/*.pdb
+/windows/runner/*.pgp
+/windows/runner/*.pgc
+/windows/runner/*.rsp
+/windows/runner/*.sbr
+/windows/runner/*.sym
+/windows/runner/*.ilk
+/windows/runner/*.meta
+/windows/runner/*.pch
+/windows/runner/*.pgd
+/windows/runner/*.bak
+/windows/runner/*.rc
+/windows/runner/*.sdf
+/windows/runner/*.ipch
+/windows/runner/*.bsc
+/windows/runner/*.suo
+/windows/runner/*.user
+/windows/runner/*.userosscache
+/windows/runner/*.sln.docstates

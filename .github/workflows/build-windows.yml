@@ -1,0 +1,75 @@
+name: Build Windows App
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        channel: 'stable'
+        
+    - name: Enable Windows Desktop
+      run: flutter config --enable-windows-desktop
+      
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Build Windows executable
+      run: flutter build windows --release
+      
+    - name: Create ZIP package
+      run: |
+        cd build/windows/runner/Release/
+        7z a -tzip ../../../dormitory_arm_flutter_windows.zip *
+        
+    - name: Create installer info
+      run: |
+        echo "# Dormitory ARM Flutter" > release_info.md
+        echo "" >> release_info.md
+        echo "## Windows Build" >> release_info.md
+        echo "- Version: ${{ github.ref_name }}" >> release_info.md
+        echo "- Build date: $(Get-Date -Format 'yyyy-MM-dd HH:mm')" >> release_info.md
+        echo "- Flutter version: $(flutter --version | Select-Object -First 1)" >> release_info.md
+        echo "" >> release_info.md
+        echo "## Installation" >> release_info.md
+        echo "1. Download dormitory_arm_flutter_windows.zip" >> release_info.md
+        echo "2. Extract all files to a folder" >> release_info.md
+        echo "3. Run dormitory_arm_flutter.exe" >> release_info.md
+        echo "" >> release_info.md
+        echo "## Requirements" >> release_info.md
+        echo "- Windows 10/11" >> release_info.md
+        echo "- No additional dependencies required" >> release_info.md
+      
+    - name: Upload Windows build
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-build
+        path: |
+          dormitory_arm_flutter_windows.zip
+          release_info.md
+        retention-days: 30
+        
+    - name: Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dormitory_arm_flutter_windows.zip
+          release_info.md
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
