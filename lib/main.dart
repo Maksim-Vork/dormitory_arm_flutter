@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/students_screen.dart';
@@ -127,7 +126,7 @@ class _MainScreenState extends State<MainScreen> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
+                  color: Colors.black.withOpacity(0.05),
                   blurRadius: 10,
                   offset: const Offset(2, 0),
                 ),
@@ -147,7 +146,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   child: Material(
                     color: isSelected
-                        ? const Color(0xFF667eea).withValues(alpha: 0.1)
+                        ? const Color(0xFF667eea).withOpacity(0.1)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
                     child: InkWell(

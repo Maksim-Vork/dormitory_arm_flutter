@@ -208,7 +208,7 @@ class _MonthlyPaymentsScreenState extends State<MonthlyPaymentsScreen> {
             children: [
               Expanded(
                 child: Card(
-                  color: const Color(0xFF667eea).withValues(alpha: 0.1),
+                  color: const Color(0xFF667eea).withOpacity(0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -237,7 +237,7 @@ class _MonthlyPaymentsScreenState extends State<MonthlyPaymentsScreen> {
               const SizedBox(width: 12),
               Expanded(
                 child: Card(
-                  color: Colors.green.withValues(alpha: 0.1),
+                  color: Colors.green.withOpacity(0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -266,7 +266,7 @@ class _MonthlyPaymentsScreenState extends State<MonthlyPaymentsScreen> {
               const SizedBox(width: 12),
               Expanded(
                 child: Card(
-                  color: Colors.red.withValues(alpha: 0.1),
+                  color: Colors.red.withOpacity(0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(

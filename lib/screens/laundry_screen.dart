@@ -334,7 +334,7 @@ class _LaundryScreenState extends State<LaundryScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 12),
                     child: Card(
-                      color: const Color(0xFF764ba2).withValues(alpha: 0.1),
+                      color: const Color(0xFF764ba2).withOpacity(0.1),
                       child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Column(

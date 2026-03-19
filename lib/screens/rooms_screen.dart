@@ -216,7 +216,7 @@ class _RoomsScreenState extends State<RoomsScreen> {
                                 decoration: BoxDecoration(
                                   color: const Color(
                                     0xFF667eea,
-                                  ).withValues(alpha: 0.1),
+                                  ).withOpacity(0.1),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: const Icon(

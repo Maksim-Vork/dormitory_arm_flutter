@@ -275,10 +275,10 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF667eea).withValues(alpha: 0.1),
+              color: const Color(0xFF667eea).withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: const Color(0xFF667eea).withValues(alpha: 0.3),
+                color: const Color(0xFF667eea).withOpacity(0.3),
               ),
             ),
             child: Row(

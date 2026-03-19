@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import '../models/student.dart';
 import '../models/room.dart';
 import '../models/settlement.dart';
@@ -27,8 +29,30 @@ class DatabaseService {
 
   static Future<Database> _initDatabase() async {
     debugPrint('=== ИНИЦИАЛИЗАЦИЯ БАЗЫ ДАННЫХ ===');
+
+    // Инициализация FFI для desktop
+    if (defaultTargetPlatform == TargetPlatform.windows ||
+        defaultTargetPlatform == TargetPlatform.linux ||
+        defaultTargetPlatform == TargetPlatform.macOS) {
+      // Инициализация фабрики FFI
+      databaseFactory = databaseFactoryFfi;
+
+      // Для desktop используем applicationDocumentsDirectory
+      final appDir = await getApplicationDocumentsDirectory();
+      final dbPath = join(appDir.path, _databaseName);
+      debugPrint('Путь к базе данных (desktop): $dbPath');
+
+      return await openDatabase(
+        dbPath,
+        version: _databaseVersion,
+        onCreate: _onCreate,
+        onUpgrade: _onUpgrade,
+      );
+    }
+
+    // Для мобильных устройств
     String path = join(await getDatabasesPath(), _databaseName);
-    debugPrint('Путь к базе данных: $path');
+    debugPrint('Путь к базе данных (mobile): $path');
 
     return await openDatabase(
       path,

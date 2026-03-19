@@ -135,7 +135,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF667eea).withValues(alpha: 0.3),
+                          color: const Color(0xFF667eea).withOpacity(0.3),
                           blurRadius: 15,
                           offset: const Offset(0, 5),
                         ),
@@ -167,9 +167,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   Text(
                                     'Текущий месяц',
                                     style: TextStyle(
-                                      color: Colors.white.withValues(
-                                        alpha: 0.8,
-                                      ),
+                                      color: Colors.white.withOpacity(0.8),
                                       fontSize: 14,
                                     ),
                                   ),
@@ -275,10 +273,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(height: 4),
         Text(
           title,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.8),
-            fontSize: 12,
-          ),
+          style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 12),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 2),
@@ -308,12 +303,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.08),
+            color: Colors.black.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
-        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
+        border: Border.all(color: color.withOpacity(0.2), width: 1),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -325,7 +320,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.1),
+                    color: color.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Icon(icon, color: color, size: 24),
