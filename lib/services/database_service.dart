@@ -518,7 +518,7 @@ class DatabaseService {
     final activeSettlements =
         Sqflite.firstIntValue(
           await db.rawQuery(
-            'SELECT COUNT(*) FROM settlements WHERE end_date IS NULL OR end_date > date("now")',
+            'SELECT COUNT(*) FROM settlements WHERE end_date IS NULL OR end_date > date(\'now\')',
           ),
         ) ??
         0;
