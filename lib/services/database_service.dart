@@ -275,7 +275,7 @@ class DatabaseService {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       'rooms',
-      orderBy: 'number',
+      orderBy: 'room_number',
     );
     return List.generate(maps.length, (i) => Room.fromMap(maps[i]));
   }

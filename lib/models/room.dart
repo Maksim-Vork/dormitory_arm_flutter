@@ -2,6 +2,8 @@ class Room {
   final int? id;
   final String number;
   final int capacity;
+  final int occupied;
+  final int? floor;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -9,6 +11,8 @@ class Room {
     this.id,
     required this.number,
     required this.capacity,
+    this.occupied = 0,
+    this.floor,
     this.createdAt,
     this.updatedAt,
   });
@@ -16,8 +20,10 @@ class Room {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'number': number,
+      'room_number': number,
       'capacity': capacity,
+      'occupied': occupied,
+      'floor': floor,
       'created_at': createdAt?.toIso8601String(),
       'updated_at': updatedAt?.toIso8601String(),
     };
@@ -26,13 +32,15 @@ class Room {
   factory Room.fromMap(Map<String, dynamic> map) {
     return Room(
       id: map['id']?.toInt(),
-      number: map['number'] ?? '',
+      number: map['room_number'] ?? '',
       capacity: map['capacity']?.toInt() ?? 0,
-      createdAt: map['created_at'] != null 
-          ? DateTime.parse(map['created_at']) 
+      occupied: map['occupied']?.toInt() ?? 0,
+      floor: map['floor']?.toInt(),
+      createdAt: map['created_at'] != null
+          ? DateTime.parse(map['created_at'])
           : null,
-      updatedAt: map['updated_at'] != null 
-          ? DateTime.parse(map['updated_at']) 
+      updatedAt: map['updated_at'] != null
+          ? DateTime.parse(map['updated_at'])
           : null,
     );
   }
@@ -41,6 +49,8 @@ class Room {
     int? id,
     String? number,
     int? capacity,
+    int? occupied,
+    int? floor,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -48,6 +58,8 @@ class Room {
       id: id ?? this.id,
       number: number ?? this.number,
       capacity: capacity ?? this.capacity,
+      occupied: occupied ?? this.occupied,
+      floor: floor ?? this.floor,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
